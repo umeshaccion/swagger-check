@@ -35,7 +35,7 @@ jobs:
 
           if [ -f "$FILE_PATH" ]; then
             echo "File exists: $FILE_PATH"
-            cat $FILE_PATH
+            cat "$FILE_PATH"
           else
             echo "File does not exist: $FILE_PATH"
             exit 1
