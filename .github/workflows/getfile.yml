@@ -20,7 +20,7 @@ jobs:
 
       - name: Download File
         run: |
-          FILE_URL="https://github.com/umeshaccion/swagger-check/blob/main/swaggerWithExamplesV2.json"
+          FILE_URL="https://github.com/umeshaccion/swagger-check/swaggerWithExamplesV2.json"
           OUTPUT_PATH="${{ github.workspace }}/temp/swaggerWithExamplesV2.json"
           
           curl -sSL $FILE_URL -o $OUTPUT_PATH
