@@ -1,4 +1,4 @@
-name: Get File from GitHub Repo
+name: Download and Check File
 
 on:
   push:
@@ -6,16 +6,40 @@ on:
       - main
 
 jobs:
-  get-file:
+  download-and-check-file:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Get File
-      run: |
-        # Replace 'path/to/your/file' with the actual path to the file in your repository
-        curl -o swaggerWithExamplesV2.json https://github.com/umeshaccion/swagger-check/blob/main/swaggerWithExamplesV2.json
-        # Alternatively, you can use wget
-        # wget -O desired_file.txt https://raw.githubusercontent.com/username/repo/main/path/to/your/file
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Download File
+        run: |
+          FILE_URL="https://github.com/umeshaccion/swagger-check/blob/main/swaggerWithExamplesV2.json"
+          OUTPUT_PATH="tmp/swaggerWithExamplesV2.json"
+          
+          curl -sSL $FILE_URL -o $OUTPUT_PATH
+
+      - name: Check File and Directory
+        run: |
+          FILE_PATH="tmp/swaggerWithExamplesV2.json"
+          DIR_PATH="tmp"
+
+          if [ -f "$FILE_PATH" ]; then
+            echo "File exists: $FILE_PATH"
+          else
+            echo "File does not exist: $FILE_PATH"
+            exit 1
+          fi
+
+          if [ -d "$DIR_PATH" ]; then
+            echo "Directory exists: $DIR_PATH"
+          else
+            echo "Directory does not exist: $DIR_PATH"
+            exit 1
+          fi
