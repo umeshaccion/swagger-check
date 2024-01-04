@@ -32,14 +32,14 @@ jobs:
       - name: Download File
         run: |
           FILE_URL="https://github.com/umeshaccion/swagger-check/swaggerWithExamplesV2.json"
-          OUTPUT_PATH="{{$FOLDER_NAME}}/swaggerWithExamplesV2.json"
+          OUTPUT_PATH="$FOLDER_NAME/swaggerWithExamplesV2.json"
           
           curl -sSL $FILE_URL -o $OUTPUT_PATH
 
       - name: Check File and Directory
         run: |
-          FILE_PATH="{{$FOLDER_NAME}}/swaggerWithExamplesV2.json"
-          DIR_PATH="{{$FOLDER_NAME}}/"
+          FILE_PATH="$FOLDER_NAME/swaggerWithExamplesV2.json"
+          DIR_PATH="$FOLDER_NAME/"
 
           if [ -f "$FILE_PATH" ]; then
             echo "File exists: $FILE_PATH"
