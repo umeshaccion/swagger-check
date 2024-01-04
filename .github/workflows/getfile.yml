@@ -1,0 +1,21 @@
+name: Get File from GitHub Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  get-file:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Get File
+      run: |
+        # Replace 'path/to/your/file' with the actual path to the file in your repository
+        curl -o swaggerWithExamplesV2.json https://github.com/umeshaccion/swagger-check/blob/main/swaggerWithExamplesV2.json
+        # Alternatively, you can use wget
+        # wget -O desired_file.txt https://raw.githubusercontent.com/username/repo/main/path/to/your/file
