@@ -27,8 +27,8 @@ jobs:
 
       - name: Check File and Directory
         run: |
-          FILE_PATH="tmp/swaggerWithExamplesV2.json"
-          DIR_PATH="${{ github.workspace }}/temp"
+          FILE_PATH="${{ github.workspace }}/swaggerWithExamplesV2.json"
+          DIR_PATH="${{ github.workspace }}/"
 
           if [ -f "$FILE_PATH" ]; then
             echo "File exists: $FILE_PATH"
