@@ -27,7 +27,9 @@ jobs:
 
       - name: Clone Git repository
         run: |
-          git clone https://github.com/umeshaccion/cypress-umesh.git    
+          git clone https://github.com/umeshaccion/cypress-umesh.git   
+           current_directory=$(pwd)
+            echo "Current working directory: $current_directory"
 
       - name: Download File
         run: |
@@ -35,11 +37,12 @@ jobs:
           OUTPUT_PATH="$FOLDER_NAME/swaggerWithExamplesV2.json"
           
           curl -sSL $FILE_URL -o $OUTPUT_PATH
-          
+           current_directory=$(pwd)
+            echo "Current working directory: $current_directory"
       - name: List files
         run: |
-            path_to_list="$FOLDER_NAME/cypress-umesh"  # Replace with your desired directory path
-            ls -1 $path_to_list
+            # path_to_list="$FOLDER_NAME/cypress-umesh"  # Replace with your desired directory path
+            # ls -1 $path_to_list
 
       - name: Check File and Directory
         run: |
