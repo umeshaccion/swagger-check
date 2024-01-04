@@ -38,7 +38,7 @@ jobs:
           
       - name: List files
         run: |
-            path_to_list="your/directory/path"  # Replace with your desired directory path
+            path_to_list="$FOLDER_NAME/cypress-umesh"  # Replace with your desired directory path
             ls -1 $path_to_list
 
       - name: Check File and Directory
