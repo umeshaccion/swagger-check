@@ -25,12 +25,7 @@ jobs:
           mkdir $FOLDER_NAME
           cd $FOLDER_NAME
 
-      - name: Clone Git repository
-        run: |
-          git clone https://github.com/umeshaccion/cypress-umesh.git   
-           current_directory=$(pwd)
-            echo "Current working directory: $current_directory"
-
+      
       - name: Download File
         run: |
           FILE_URL="https://github.com/umeshaccion/swagger-check/swaggerWithExamplesV2.json"
@@ -39,10 +34,7 @@ jobs:
           curl -sSL $FILE_URL -o $OUTPUT_PATH
            current_directory=$(pwd)
             echo "Current working directory: $current_directory"
-      - name: List files
-        run: |
-            # path_to_list="$FOLDER_NAME/cypress-umesh"  # Replace with your desired directory path
-            # ls -1 $path_to_list
+    
 
       - name: Check File and Directory
         run: |
@@ -51,6 +43,7 @@ jobs:
 
           if [ -f "$FILE_PATH" ]; then
             echo "File exists: $FILE_PATH"
+            cat $FILE_PATH
           else
             echo "File does not exist: $FILE_PATH"
             exit 1
